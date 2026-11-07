@@ -2,7 +2,9 @@
 
 **Daniel Angelov · public working draft · November 2026**
 
-How do you turn labeled examples into a model that another process can actually use? This book follows that question from Python iterators and batches through PyTorch training, Hugging Face fine-tuning and model serving. I built it as a hands-on study project for experienced software developers moving into ML engineering, with AI-assisted authoring, implementation and review.
+How do you turn labeled examples into a model that another process can actually use? This book follows that question from Python iterators and batches through PyTorch training, Hugging Face fine-tuning and model serving.
+
+I started this book as a Python and PyTorch playground for my own transition into ML engineering. I shaped the curriculum around the skills I wanted to practice, chose document processing as a recurring project, and set the standard for each chapter: a practical problem, enough theory to understand the implementation, and an exercise I could work through myself. When early drafts felt too dry or the exercises assumed too much Python, I redirected the chapters. I also proposed the resumable authoring pipeline. AI agents helped draft and revise the text, implement examples and tests, execute notebooks, and critique the results. I used those reviews to decide what needed another pass and what was ready to share as a working draft.
 
 ## A short tour for interviewers
 
