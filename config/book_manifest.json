@@ -1,0 +1,1146 @@
+{
+  "version": 1,
+  "title": "PyTorch & AI Engineering Lab",
+  "status": "public working draft",
+  "shared_context": [
+    "BOOK_GOALS.md",
+    "BOOK_STYLE_GUIDE.md",
+    "CURRICULUM.md",
+    "AGENTS.md",
+    "book/01-python-for-ai/01-iterators-and-batching.md",
+    "book/01-python-for-ai/02-functions-and-data-model.md"
+  ],
+  "chapters": [
+    {
+      "id": "01",
+      "slug": "iterators-and-batching",
+      "title": "Following the data: iterators and batching",
+      "managed": false,
+      "tier": "core",
+      "depends_on": [],
+      "curriculum_modules": [
+        "01"
+      ],
+      "artifact": "Protected narrative with integrator-created print source, tagged practice and separate batching/epoch/JSONL answers",
+      "objectives": [
+        "Preserve the reader-approved iterable/iterator/generator and sample-to-batch explanation",
+        "Complete print format, exercise tagging and separate JSONL/epoch solutions without a wholesale rewrite",
+        "Validate explicit ingestion edge cases and connect reusable streams to the loader"
+      ],
+      "topics": [
+        "iteration",
+        "generator",
+        "batching",
+        "JSONL",
+        "epoch exhaustion",
+        "separate answers"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/tutorial/classes.html#iterators"
+      ],
+      "paths": {
+        "manuscript": "book/01-python-for-ai/01-iterators-and-batching.md",
+        "notebook": "book/01-python-for-ai/01-iterators-and-batching.ipynb",
+        "solutions": "solutions/book-01/ch01_streams.py",
+        "tests": "tests/test_ch01_streams.py"
+      },
+      "status": "existing-reference"
+    },
+    {
+      "id": "02",
+      "slug": "functions-and-data-model",
+      "title": "From Python functions to model inputs",
+      "managed": false,
+      "tier": "core",
+      "depends_on": [
+        "01"
+      ],
+      "curriculum_modules": [
+        "01",
+        "02"
+      ],
+      "artifact": "Protected sample-to-batch transformation with explicit synthetic document label namespace",
+      "objectives": [
+        "Prepare features and label IDs without changing raw samples",
+        "Assemble aligned model inputs and targets from one-shot iterators",
+        "Explain the binary synthetic teaching subset and the later real-data loader handoff"
+      ],
+      "topics": [
+        "function",
+        "callback",
+        "ownership",
+        "feature",
+        "label",
+        "batch",
+        "label namespace",
+        "synthetic fixture"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/tutorial/controlflow.html#defining-functions"
+      ],
+      "paths": {
+        "manuscript": "book/01-python-for-ai/02-functions-and-data-model.md",
+        "notebook": "book/01-python-for-ai/02-functions-and-data-model.ipynb",
+        "solutions": "solutions/book-01/ch02_functions.py",
+        "tests": "tests/test_ch02_functions.py"
+      },
+      "status": "existing-draft-reference"
+    },
+    {
+      "id": "03",
+      "slug": "datasets-and-configuration",
+      "title": "Objects that feed a model",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "02"
+      ],
+      "curriculum_modules": [
+        "01",
+        "05"
+      ],
+      "artifact": "Indexable dataset and immutable configuration connected to the shared sample/loader contract",
+      "objectives": [
+        "Write a small class with __len__ and __getitem__",
+        "Use a dataclass to expose preprocessing and ownership choices",
+        "Connect the dataset contract to a real DataLoader while testing index/ownership failures"
+      ],
+      "topics": [
+        "class",
+        "self",
+        "methods",
+        "dataclass",
+        "indexing",
+        "configuration",
+        "Dataset",
+        "DataLoader handoff"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/tutorial/classes.html",
+        "https://docs.python.org/3.11/library/dataclasses.html"
+      ],
+      "paths": {
+        "manuscript": "book/01-python-for-ai/03-classes-protocols-and-configuration.md",
+        "notebook": "book/01-python-for-ai/03-classes-protocols-and-configuration.ipynb",
+        "solutions": "solutions/draft/ch03.py",
+        "tests": "tests/draft/test_ch03.py"
+      }
+    },
+    {
+      "id": "04",
+      "slug": "tensor-shapes",
+      "title": "Tensors: shape is part of the interface",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "02"
+      ],
+      "curriculum_modules": [
+        "02"
+      ],
+      "artifact": "Training-fitted tensor normalization reused for held-out and inference inputs",
+      "objectives": [
+        "Explain feature axes, dtype and broadcasting through the project inputs",
+        "Fit normalization on training data only and reuse saved mean/scale with a zero-variance policy",
+        "Predict and diagnose shape, shared-storage and leakage errors"
+      ],
+      "topics": [
+        "tensor",
+        "shape",
+        "axis",
+        "dtype",
+        "broadcasting",
+        "view",
+        "device",
+        "train-only normalization",
+        "saved statistics",
+        "leakage"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/basics/tensorqs_tutorial.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/04-tensor-shapes.md",
+        "notebook": "book/draft/04-tensor-shapes.ipynb",
+        "solutions": "solutions/draft/ch04.py",
+        "tests": "tests/draft/test_ch04.py"
+      }
+    },
+    {
+      "id": "05",
+      "slug": "autograd",
+      "title": "Autograd: make one parameter learn",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "04"
+      ],
+      "curriculum_modules": [
+        "03"
+      ],
+      "artifact": "Gradient check and bounded learning-rate/stale-gradient diagnosis",
+      "objectives": [
+        "Connect prediction error, scalar loss and parameter gradients before optimizer syntax",
+        "Compare autograd with finite differences and explain gradient accumulation",
+        "Predict or debug a bounded optimization failure and justify a learning-rate change"
+      ],
+      "topics": [
+        "parameter",
+        "loss",
+        "derivative",
+        "gradient",
+        "backward",
+        "finite differences",
+        "learning rate",
+        "gradient diagnosis"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/basics/autogradqs_tutorial.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/05-autograd.md",
+        "notebook": "book/draft/05-autograd.ipynb",
+        "solutions": "solutions/draft/ch05.py",
+        "tests": "tests/draft/test_ch05.py"
+      }
+    },
+    {
+      "id": "06",
+      "slug": "first-classifier",
+      "title": "Train your first PyTorch classifier",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "03",
+        "04",
+        "05"
+      ],
+      "curriculum_modules": [
+        "04"
+      ],
+      "artifact": "Real 8x8 digits: linear baseline versus small MLP trained with DataLoader and saved preprocessing",
+      "objectives": [
+        "Explain linear boundaries, hidden layers, ReLU, logits and cross-entropy through a scanned-form digit component",
+        "Train linear and nonlinear models on fixed stratified real digits splits using minibatches and the pilot fixed /16 measurement-scale preprocessing",
+        "Compare held-out metrics, inspect mistakes and persist architecture/preprocessing/weights",
+        "Independently modify or debug the model/loader and explain the observed effect"
+      ],
+      "topics": [
+        "nn.Module",
+        "Linear",
+        "logits",
+        "cross entropy",
+        "optimizer",
+        "epoch",
+        "MLP",
+        "ReLU",
+        "DataLoader",
+        "digits",
+        "baseline",
+        "stratification",
+        "initialization"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/basics/buildmodel_tutorial.html",
+        "https://docs.pytorch.org/tutorials/beginner/basics/optimization_tutorial.html",
+        "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html",
+        "https://archive.ics.uci.edu/dataset/80/optical+recognition+of+handwritten+digits",
+        "https://docs.pytorch.org/tutorials/beginner/basics/data_tutorial.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/06-first-classifier.md",
+        "notebook": "book/draft/06-first-classifier.ipynb",
+        "solutions": "solutions/draft/ch06.py",
+        "tests": "tests/draft/test_ch06.py"
+      }
+    },
+    {
+      "id": "07",
+      "slug": "evaluation-and-checkpoints",
+      "title": "Measure, split, and reproduce",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "06"
+      ],
+      "curriculum_modules": [
+        "05"
+      ],
+      "artifact": "Evaluated digits trainer with durable inference reload and epoch-boundary training resume",
+      "objectives": [
+        "Reuse the approved pilot SEED=7 split IDs and saved fixed /16 scaler configuration; justify metrics and compare a baseline",
+        "Inspect confusion/mistakes and distinguish training, validation and untouched test decisions",
+        "Save configuration, labels, preprocessing, optimizer, epoch and RNG/loader state",
+        "Verify prediction reload and bounded resumed versus uninterrupted training; learner changes or debugs trainer behavior"
+      ],
+      "topics": [
+        "split",
+        "leakage",
+        "baseline",
+        "metric",
+        "eval",
+        "no_grad",
+        "checkpoint",
+        "seed",
+        "optimizer state",
+        "RNG state",
+        "resume",
+        "confusion matrix"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/basics/saveloadrun_tutorial.html",
+        "https://scikit-learn.org/stable/modules/model_evaluation.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/07-evaluation-and-checkpoints.md",
+        "notebook": "book/draft/07-evaluation-and-checkpoints.ipynb",
+        "solutions": "solutions/draft/ch07.py",
+        "tests": "tests/draft/test_ch07.py"
+      }
+    },
+    {
+      "id": "08",
+      "slug": "pretrained-model-inputs",
+      "title": "Use a pretrained tokenizer and model",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "04",
+        "07"
+      ],
+      "curriculum_modules": [
+        "07",
+        "10"
+      ],
+      "artifact": "Executed real bert-tiny tokenizer/encoder on public SMS with common cache/download policy",
+      "objectives": [
+        "Explain pretrained representations versus token IDs, masks, padding and truncation",
+        "Execute the identified real checkpoint on the shared SMS records and inspect input/output shapes",
+        "Persist/reload tokenizer configuration and checkpoint provenance with verified local/cache resolution",
+        "Treat a missing checkpoint as an incomplete central outcome, not a passing offline smoke path"
+      ],
+      "topics": [
+        "tokenizer",
+        "token ID",
+        "attention mask",
+        "padding",
+        "truncation",
+        "pretrained",
+        "AutoModel",
+        "sms-routing.v1",
+        "cache policy",
+        "real pretrained inference",
+        "tokenizer reload"
+      ],
+      "sources": [
+        "https://huggingface.co/docs/transformers/quicktour",
+        "https://huggingface.co/docs/transformers/preprocessing",
+        "https://huggingface.co/prajjwal1/bert-tiny",
+        "https://huggingface.co/docs/huggingface_hub/guides/download",
+        "https://archive.ics.uci.edu/dataset/228/sms+spam+collection"
+      ],
+      "paths": {
+        "manuscript": "book/draft/08-pretrained-model-inputs.md",
+        "notebook": "book/draft/08-pretrained-model-inputs.ipynb",
+        "solutions": "solutions/draft/ch08.py",
+        "tests": "tests/draft/test_ch08.py"
+      }
+    },
+    {
+      "id": "09",
+      "slug": "first-fine-tuning",
+      "title": "Fine-tune a small pretrained model",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "07",
+        "08"
+      ],
+      "curriculum_modules": [
+        "10",
+        "11"
+      ],
+      "artifact": "Real bounded SMS adaptation with baseline/held-out comparison and model-plus-tokenizer reload",
+      "objectives": [
+        "Use the canonical public SMS IDs and train-only baseline with macro-F1 and spam precision/recall",
+        "Compare frozen encoder/new head with controlled final-encoder-layer adaptation for a meaningful bounded CPU budget",
+        "Measure changed and unchanged parameters and explain adaptation/overfitting tradeoffs",
+        "Save and reload the actual selected model and tokenizer; independently modify training and explain results"
+      ],
+      "topics": [
+        "fine-tuning",
+        "checkpoint",
+        "training arguments",
+        "learning rate",
+        "evaluation",
+        "artifact",
+        "frozen encoder",
+        "changed tensors",
+        "held-out evaluation",
+        "tokenizer reload"
+      ],
+      "sources": [
+        "https://huggingface.co/docs/transformers/training",
+        "https://huggingface.co/prajjwal1/bert-tiny",
+        "https://archive.ics.uci.edu/dataset/228/sms+spam+collection"
+      ],
+      "paths": {
+        "manuscript": "book/draft/09-first-fine-tuning.md",
+        "notebook": "book/draft/09-first-fine-tuning.ipynb",
+        "solutions": "solutions/draft/ch09.py",
+        "tests": "tests/draft/test_ch09.py"
+      }
+    },
+    {
+      "id": "10",
+      "slug": "files-and-data-contracts",
+      "title": "Turn incoming files into a usable dataset",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "03",
+        "09"
+      ],
+      "curriculum_modules": [
+        "00",
+        "01",
+        "05"
+      ],
+      "artifact": "Validated JSONL/CSV ingestion preserving public SMS IDs and saved split lineage",
+      "objectives": [
+        "Parse records with explicit schema and malformed-input policies",
+        "Explain how duplicate/conflicting messages affect evaluation and apply the shared canonicalization policy",
+        "Connect file ingestion to persisted split/feature inputs without target leakage",
+        "Independently change or debug a data transformation and test its consequences"
+      ],
+      "topics": [
+        "pathlib",
+        "context manager",
+        "JSONL",
+        "CSV",
+        "schema",
+        "quarantine",
+        "provenance",
+        "duplicate groups",
+        "source provenance",
+        "saved splits"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/library/json.html",
+        "https://docs.python.org/3.11/library/csv.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/10-files-and-data-contracts.md",
+        "notebook": "book/draft/10-files-and-data-contracts.ipynb",
+        "solutions": "solutions/draft/ch10.py",
+        "tests": "tests/draft/test_ch10.py"
+      }
+    },
+    {
+      "id": "11",
+      "slug": "pandas-and-sql",
+      "title": "Join and inspect data before training",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "10"
+      ],
+      "curriculum_modules": [
+        "05"
+      ],
+      "artifact": "SQL-to-pandas project preparation with checked joins and preserved SMS split IDs",
+      "objectives": [
+        "Read a local SQLite representation using parameterized SQL",
+        "Inspect missingness, duplicates and join cardinality before choosing a transformation",
+        "Preserve source IDs and train/evaluation separation through joins and feature preparation",
+        "Independently diagnose a join or transformation that leaks labels or duplicates evaluation rows"
+      ],
+      "topics": [
+        "sqlite3",
+        "SQL",
+        "parameter binding",
+        "DataFrame",
+        "join",
+        "missing values",
+        "duplicates",
+        "join cardinality",
+        "split preservation",
+        "leakage diagnosis"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/library/sqlite3.html",
+        "https://pandas.pydata.org/docs/user_guide/merging.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/11-pandas-and-sql.md",
+        "notebook": "book/draft/11-pandas-and-sql.ipynb",
+        "solutions": "solutions/draft/ch11.py",
+        "tests": "tests/draft/test_ch11.py"
+      }
+    },
+    {
+      "id": "12",
+      "slug": "dataset-artifacts",
+      "title": "Version the data transformation",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "08",
+        "10",
+        "11"
+      ],
+      "curriculum_modules": [
+        "10"
+      ],
+      "artifact": "Persisted Hugging Face Dataset and actual bounded CPU Accelerate training integration",
+      "objectives": [
+        "Create/map/save/reload the project Dataset while preserving IDs, schema and transformations",
+        "Implement and validate a meaningful independent transformation rather than only its hash",
+        "Run Accelerator(cpu=True) with prepared model/optimizer/loader, backward and unwrapped save",
+        "Record single-process limitations and hand saved dataset/features to later model/serving stages"
+      ],
+      "topics": [
+        "Datasets",
+        "map",
+        "batch transform",
+        "schema",
+        "fingerprint",
+        "split IDs",
+        "Accelerate",
+        "Accelerator",
+        "prepare",
+        "backward",
+        "dataset round-trip"
+      ],
+      "sources": [
+        "https://huggingface.co/docs/datasets/create_dataset",
+        "https://huggingface.co/docs/datasets/process",
+        "https://huggingface.co/docs/accelerate/quicktour"
+      ],
+      "paths": {
+        "manuscript": "book/draft/12-dataset-artifacts.md",
+        "notebook": "book/draft/12-dataset-artifacts.ipynb",
+        "solutions": "solutions/draft/ch12.py",
+        "tests": "tests/draft/test_ch12.py"
+      }
+    },
+    {
+      "id": "13",
+      "slug": "embeddings-and-retrieval",
+      "title": "Search by vectors and evaluate the neighbors",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "04",
+        "08",
+        "12"
+      ],
+      "curriculum_modules": [
+        "07"
+      ],
+      "artifact": "Measured lexical versus real learned MiniLM retrieval over versioned operator policies",
+      "objectives": [
+        "Explain vector geometry, pooling, normalization and representation limits before similarity code",
+        "Build lexical and actual pretrained encoder indexes on the same policy passages with source references",
+        "Evaluate difficult paraphrases/distractors/no-evidence queries with deterministic ties and separate development/evaluation annotations",
+        "Independently change representation or retrieval settings and interpret recall/MRR and mistakes"
+      ],
+      "topics": [
+        "embedding",
+        "vector",
+        "cosine similarity",
+        "normalization",
+        "top-k",
+        "retrieval metric",
+        "learned encoder",
+        "MiniLM",
+        "mean pooling",
+        "MRR",
+        "policy corpus"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.cosine_similarity.html",
+        "https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"
+      ],
+      "paths": {
+        "manuscript": "book/draft/13-embeddings-and-retrieval.md",
+        "notebook": "book/draft/13-embeddings-and-retrieval.ipynb",
+        "solutions": "solutions/draft/ch13.py",
+        "tests": "tests/draft/test_ch13.py"
+      }
+    },
+    {
+      "id": "14",
+      "slug": "rag-and-grounding",
+      "title": "Build an evidence-first RAG workflow",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "13"
+      ],
+      "curriculum_modules": [
+        "13"
+      ],
+      "artifact": "Executed bounded local FLAN-T5 RAG with extractive baseline, citations and support evaluation",
+      "objectives": [
+        "Explain chunking and retrieval versus answer correctness through the operator-policy assistant",
+        "Run a real local generator on retrieved versioned evidence, preserving prompts and outputs",
+        "Evaluate retrieval, answer support, citation validity and abstention separately on difficult/no-evidence cases",
+        "Independently diagnose unsupported output or change an evidence policy; a mock response cannot pass generation"
+      ],
+      "topics": [
+        "chunking",
+        "RAG",
+        "citation",
+        "grounding",
+        "abstention",
+        "retrieval evaluation",
+        "local generation",
+        "FLAN-T5",
+        "unsupported answer",
+        "evidence support"
+      ],
+      "sources": [
+        "https://huggingface.co/learn/cookbook/en/advanced_rag",
+        "https://huggingface.co/google/flan-t5-small"
+      ],
+      "paths": {
+        "manuscript": "book/draft/14-rag-and-grounding.md",
+        "notebook": "book/draft/14-rag-and-grounding.ipynb",
+        "solutions": "solutions/draft/ch14.py",
+        "tests": "tests/draft/test_ch14.py"
+      }
+    },
+    {
+      "id": "15",
+      "slug": "inference-performance",
+      "title": "Run inference with measurable tradeoffs",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "07",
+        "09"
+      ],
+      "curriculum_modules": [
+        "12"
+      ],
+      "artifact": "Actual trained-model inference benchmark with CPU quantization and memory/quality comparison",
+      "objectives": [
+        "Use eval and inference mode for the saved trained project model",
+        "Measure actual item/batch latency and throughput after warmup while preserving order",
+        "Run a supported CPU quantization path and compare outputs, held-out quality and model bytes/process memory",
+        "Explain observed tradeoffs and measurement limits without invented performance thresholds"
+      ],
+      "topics": [
+        "inference_mode",
+        "batching",
+        "latency",
+        "throughput",
+        "warmup",
+        "quantization",
+        "actual model benchmark",
+        "CPU quantization",
+        "process memory",
+        "quality tradeoff"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/docs/stable/generated/torch.inference_mode.html",
+        "https://docs.pytorch.org/tutorials/recipes/recipes/benchmark.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/15-inference-performance.md",
+        "notebook": "book/draft/15-inference-performance.ipynb",
+        "solutions": "solutions/draft/ch15.py",
+        "tests": "tests/draft/test_ch15.py"
+      }
+    },
+    {
+      "id": "16",
+      "slug": "model-serving",
+      "title": "Expose the model through a small service",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "07",
+        "09",
+        "12",
+        "15"
+      ],
+      "curriculum_modules": [
+        "14"
+      ],
+      "artifact": "Trained-model FastAPI HTTP boundary restored from a durable versioned artifact",
+      "objectives": [
+        "Load real persisted model and preprocessing once at service lifespan startup",
+        "Validate JSON requests and return stable task labels, probabilities, artifact identity and distinct review route",
+        "Exercise HTTP transport including invalid input and offline reload without notebook globals",
+        "Independently change/test an inference boundary or review policy and explain its effect"
+      ],
+      "topics": [
+        "FastAPI",
+        "request schema",
+        "lifecycle",
+        "artifact",
+        "health check",
+        "API testing",
+        "HTTP transport",
+        "lifespan",
+        "persisted trained model",
+        "abstention route"
+      ],
+      "sources": [
+        "https://fastapi.tiangolo.com/tutorial/testing/",
+        "https://fastapi.tiangolo.com/advanced/events/"
+      ],
+      "paths": {
+        "manuscript": "book/draft/16-model-serving.md",
+        "notebook": "book/draft/16-model-serving.ipynb",
+        "solutions": "solutions/draft/ch16.py",
+        "tests": "tests/draft/test_ch16.py"
+      }
+    },
+    {
+      "id": "17",
+      "slug": "workflow-orchestration",
+      "title": "Compose restartable AI workflow steps",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "10",
+        "14",
+        "16"
+      ],
+      "curriculum_modules": [
+        "14",
+        "16"
+      ],
+      "artifact": "Durable SQLite inference workflow with real model step, injected failure and restart",
+      "objectives": [
+        "Model explicit bounded retries, idempotency keys and state transitions for actual inference",
+        "Persist input identity, artifact/policy versions and validated step results",
+        "Interrupt and resume a genuine workflow step without duplicating committed results",
+        "Explain at-least-once computation versus exactly-once side effects and independently repair a failure"
+      ],
+      "topics": [
+        "state machine",
+        "idempotence",
+        "retry",
+        "timeout",
+        "tool call",
+        "persistence",
+        "real inference step",
+        "failure injection",
+        "artifact version",
+        "at-least-once"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/library/sqlite3.html",
+        "https://platform.openai.com/docs/guides/function-calling"
+      ],
+      "paths": {
+        "manuscript": "book/draft/17-workflow-orchestration.md",
+        "notebook": "book/draft/17-workflow-orchestration.ipynb",
+        "solutions": "solutions/draft/ch17.py",
+        "tests": "tests/draft/test_ch17.py"
+      }
+    },
+    {
+      "id": "18",
+      "slug": "observability-and-safety",
+      "title": "Make failures visible without leaking data",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "16",
+        "17"
+      ],
+      "curriculum_modules": [
+        "14"
+      ],
+      "artifact": "Operational report diagnosing an injected model-workflow failure without raw text logs",
+      "objectives": [
+        "Record actual latency, attempts, failures and model/data/policy versions with redacted logs",
+        "Diagnose an injected HTTP/workflow failure from the run report and verify recovery",
+        "Separate drift signals from demonstrated quality degradation and validate untrusted boundaries",
+        "Independently alter an operational policy and explain reliability/privacy limits"
+      ],
+      "topics": [
+        "logging",
+        "redaction",
+        "observability",
+        "drift",
+        "untrusted input",
+        "least privilege",
+        "failure diagnosis",
+        "operational report",
+        "version lineage"
+      ],
+      "sources": [
+        "https://docs.python.org/3.11/howto/logging.html",
+        "https://docs.python.org/3.11/library/logging.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/18-observability-and-safety.md",
+        "notebook": "book/draft/18-observability-and-safety.ipynb",
+        "solutions": "solutions/draft/ch18.py",
+        "tests": "tests/draft/test_ch18.py"
+      }
+    },
+    {
+      "id": "19",
+      "slug": "vision-and-sequences",
+      "title": "Match architecture to input structure",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "06",
+        "07"
+      ],
+      "curriculum_modules": [
+        "06"
+      ],
+      "artifact": "Small trained digits MLP/CNN/row-sequence LSTM comparison with checked dtype contracts",
+      "objectives": [
+        "Explain spatial versus ordered structure and the assumptions each architecture makes",
+        "Train a compact CNN and actual LSTM on the fixed real digits splits and compare with the MLP budget/results",
+        "Align integer sequence-length dtype promises and regression tests",
+        "Independently modify architecture or diagnose a masking/shape error and explain observed limitations"
+      ],
+      "topics": [
+        "CNN",
+        "convolution",
+        "channels",
+        "RNN",
+        "LSTM",
+        "hidden state",
+        "trained comparison",
+        "LSTM training",
+        "integer dtype",
+        "digits reuse"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/blitz/cifar10_tutorial.html",
+        "https://docs.pytorch.org/docs/stable/generated/torch.nn.LSTM.html",
+        "https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_digits.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/19-vision-and-sequences.md",
+        "notebook": "book/draft/19-vision-and-sequences.ipynb",
+        "solutions": "solutions/draft/ch19.py",
+        "tests": "tests/draft/test_ch19.py"
+      }
+    },
+    {
+      "id": "20",
+      "slug": "attention",
+      "title": "See what attention computes",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "04",
+        "08"
+      ],
+      "curriculum_modules": [
+        "08"
+      ],
+      "artifact": "Causal attention implementation with future-isolation tests and a defined GPT input interface",
+      "objectives": [
+        "Explain query/key/value dimensions and scaled weighted aggregation",
+        "Implement causal masks and verify future tokens cannot influence earlier outputs",
+        "Connect the attention tensor contract to the next chapter transformer block without claiming single-head attention is a full GPT"
+      ],
+      "topics": [
+        "query",
+        "key",
+        "value",
+        "softmax",
+        "causal mask",
+        "attention",
+        "causal isolation",
+        "transformer interface"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/docs/stable/generated/torch.nn.functional.scaled_dot_product_attention.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/20-attention.md",
+        "notebook": "book/draft/20-attention.ipynb",
+        "solutions": "solutions/draft/ch20.py",
+        "tests": "tests/draft/test_ch20.py"
+      }
+    },
+    {
+      "id": "21",
+      "slug": "tiny-language-model",
+      "title": "Train a tiny language-model experiment",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "05",
+        "06",
+        "20"
+      ],
+      "curriculum_modules": [
+        "09"
+      ],
+      "artifact": "Minimal causal transformer/GPT with bigram baseline, held-out loss and bounded generation",
+      "objectives": [
+        "Explain positions, causal attention, residual/feed-forward blocks and next-token targets",
+        "Implement and train a small causal transformer with a fixed bounded CPU budget and separate held-out corpus",
+        "Compare with the bigram baseline using held-out loss and inspect generated samples",
+        "Independently change/debug a GPT component; state tiny-data limits without claiming useful LLM quality"
+      ],
+      "topics": [
+        "next token",
+        "causal objective",
+        "context window",
+        "sampling",
+        "temperature",
+        "generation",
+        "GPT",
+        "positional embeddings",
+        "residual",
+        "feed-forward",
+        "held-out loss"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/transformer_tutorial.html",
+        "https://huggingface.co/docs/transformers/generation_strategies",
+        "https://arxiv.org/abs/1706.03762"
+      ],
+      "paths": {
+        "manuscript": "book/draft/21-tiny-language-model.md",
+        "notebook": "book/draft/21-tiny-language-model.ipynb",
+        "solutions": "solutions/draft/ch21.py",
+        "tests": "tests/draft/test_ch21.py"
+      }
+    },
+    {
+      "id": "22",
+      "slug": "parameter-efficient-adaptation",
+      "title": "Adapt fewer parameters with LoRA",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "09"
+      ],
+      "curriculum_modules": [
+        "11"
+      ],
+      "artifact": "Real PEFT LoRA adaptation of bert-tiny on shared SMS with frozen-base and adapter reload evidence",
+      "objectives": [
+        "Explain low-rank update geometry and parameter budgets with an inspectable local example",
+        "Train actual PEFT adapters on the identified real pretrained BERT and canonical SMS splits",
+        "Verify frozen base and changed adapter/head tensors and compare held-out metrics",
+        "Save/reload adapter and tokenizer over the recorded base revision; independently change an adaptation choice"
+      ],
+      "topics": [
+        "LoRA",
+        "rank",
+        "adapter",
+        "frozen weights",
+        "trainable parameters",
+        "PEFT",
+        "real PEFT adaptation",
+        "adapter reload",
+        "pretrained base revision"
+      ],
+      "sources": [
+        "https://huggingface.co/docs/peft/conceptual_guides/lora",
+        "https://huggingface.co/docs/peft/quicktour",
+        "https://huggingface.co/prajjwal1/bert-tiny"
+      ],
+      "paths": {
+        "manuscript": "book/draft/22-parameter-efficient-adaptation.md",
+        "notebook": "book/draft/22-parameter-efficient-adaptation.ipynb",
+        "solutions": "solutions/draft/ch22.py",
+        "tests": "tests/draft/test_ch22.py"
+      }
+    },
+    {
+      "id": "23",
+      "slug": "research-architectures",
+      "title": "Study predictive error and replay",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "05",
+        "07"
+      ],
+      "curriculum_modules": [
+        "15"
+      ],
+      "artifact": "Predictive-error/replay controlled experiment at equal update budget",
+      "objectives": [
+        "Separate biological analogy from implemented learning mechanisms",
+        "State a falsifiable hypothesis and compare sequential versus replay updates at equal total optimizer budget",
+        "Inspect retention/forgetting outcomes and independently change one controlled factor"
+      ],
+      "topics": [
+        "predictive coding",
+        "replay",
+        "eligibility trace",
+        "neuromodulation",
+        "hypothesis",
+        "ablation",
+        "equal update budget",
+        "forgetting",
+        "controlled comparison"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/intermediate/reinforcement_q_learning.html"
+      ],
+      "paths": {
+        "manuscript": "book/draft/23-research-architectures.md",
+        "notebook": "book/draft/23-research-architectures.ipynb",
+        "solutions": "solutions/draft/ch23.py",
+        "tests": "tests/draft/test_ch23.py"
+      }
+    },
+    {
+      "id": "24",
+      "slug": "ai-platform-adapters",
+      "title": "Keep provider integrations replaceable",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "17",
+        "18"
+      ],
+      "curriculum_modules": [
+        "16"
+      ],
+      "artifact": "Replaceable provider/tool contract with bounded fake-adapter failure tests",
+      "objectives": [
+        "Define common validated requests/results for optional provider adapters",
+        "Exercise malformed outputs, retry limits and stable replay using offline fakes",
+        "Explain optional live-provider and agent-tool boundaries without claiming unperformed validation"
+      ],
+      "topics": [
+        "provider adapter",
+        "structured output",
+        "tool schema",
+        "mock",
+        "agent instruction",
+        "MCP boundary",
+        "bounded tool contract",
+        "provider limitations"
+      ],
+      "sources": [
+        "https://platform.openai.com/docs/guides/function-calling",
+        "https://docs.anthropic.com/en/docs/agents-and-tools/tool-use/overview",
+        "https://docs.github.com/en/copilot/"
+      ],
+      "paths": {
+        "manuscript": "book/draft/24-ai-platform-adapters.md",
+        "notebook": "book/draft/24-ai-platform-adapters.ipynb",
+        "solutions": "solutions/draft/ch24.py",
+        "tests": "tests/draft/test_ch24.py"
+      }
+    },
+    {
+      "id": "25",
+      "slug": "book-agent-pipeline",
+      "title": "Learn orchestration by producing this book",
+      "managed": true,
+      "tier": "study",
+      "depends_on": [
+        "17",
+        "18",
+        "24"
+      ],
+      "curriculum_modules": [
+        "16"
+      ],
+      "artifact": "Actual book-factory fake-agent failure/resume walkthrough with durable evidence",
+      "objectives": [
+        "Map shared requirements and owned paths to real factory task contracts",
+        "Run a bounded actual-factory fake-adapter failure and inspect persisted prompts/hashes/logs/stages",
+        "Resume the recorded run without promoting unreviewed material and independently diagnose a stale-context failure",
+        "Explicitly distinguish fake-adapter validation from unverified live CLI/provider dispatch"
+      ],
+      "topics": [
+        "manifest",
+        "dependency graph",
+        "worktree",
+        "author",
+        "reviewer",
+        "validation gate",
+        "resume",
+        "actual factory",
+        "fake adapter",
+        "failure walkthrough",
+        "context fingerprint"
+      ],
+      "sources": [
+        "https://developers.openai.com/codex/noninteractive",
+        "https://git-scm.com/docs/git-worktree"
+      ],
+      "paths": {
+        "manuscript": "book/draft/25-book-agent-pipeline.md",
+        "notebook": "book/draft/25-book-agent-pipeline.ipynb",
+        "solutions": "solutions/draft/ch25.py",
+        "tests": "tests/draft/test_ch25.py"
+      }
+    },
+    {
+      "id": "26",
+      "slug": "integrated-capstone",
+      "title": "Deliver an end-to-end ML/AI workflow",
+      "managed": true,
+      "tier": "core",
+      "depends_on": [
+        "07",
+        "09",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18"
+      ],
+      "curriculum_modules": [
+        "05",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "artifact": "Durable public-SMS capstone: baseline/model/evidence, fresh-process HTTP restoration and retryable jobs",
+      "objectives": [
+        "Connect real source records, duplicate-safe saved splits, baseline/training and held-out evaluation with versioned artifacts",
+        "Restore a persisted real model and preprocessing offline in a fresh process without notebook globals or retraining",
+        "Exercise HTTP JSON, evidence retrieval, malformed input, interrupted/retried SQLite job and redacted operational report",
+        "Independently change model/features/review policy and explain held-out quality, coverage and operational consequences"
+      ],
+      "topics": [
+        "capstone",
+        "artifact lineage",
+        "evaluation",
+        "serving",
+        "reproducibility",
+        "operational handoff",
+        "fresh-process restore",
+        "real public data",
+        "HTTP",
+        "durable workflow",
+        "independent model change"
+      ],
+      "sources": [
+        "https://docs.pytorch.org/tutorials/beginner/basics/intro.html",
+        "https://huggingface.co/docs/transformers/training",
+        "https://fastapi.tiangolo.com/tutorial/testing/"
+      ],
+      "paths": {
+        "manuscript": "book/draft/26-integrated-capstone.md",
+        "notebook": "book/draft/26-integrated-capstone.ipynb",
+        "solutions": "solutions/draft/ch26.py",
+        "tests": "tests/draft/test_ch26.py"
+      }
+    }
+  ]
+}

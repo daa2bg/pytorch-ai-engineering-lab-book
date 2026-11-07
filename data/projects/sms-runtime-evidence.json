@@ -1,0 +1,307 @@
+{
+  "kind": "actual UCI execution, not synthetic fixture",
+  "recorded_at_utc": "2026-10-29T02:18:45.876643+00:00",
+  "python": "3.12.9",
+  "torch": "2.8.0+cpu",
+  "threads": 1,
+  "training_seconds": 4.5678412998095155,
+  "source": {
+    "task_version": "sms-routing.v1",
+    "source": {
+      "name": "UCI SMS Spam Collection",
+      "url": "https://archive.ics.uci.edu/dataset/228/sms+spam+collection",
+      "download_url": "https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip",
+      "doi": "10.24432/C5CC84",
+      "citation": "Almeida, T. & Hidalgo, J. (2011). SMS Spam Collection. UCI Machine Learning Repository.",
+      "license": "CC-BY-4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0/"
+    },
+    "raw_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d",
+    "raw_rows": 5574,
+    "unique_rows": 5159,
+    "duplicate_rows": 415,
+    "conflicting_canonical_sha256": [],
+    "identity_policy": "physical-line-1based.v1",
+    "canonicalization": "nfkc-casefold-whitespace.v1",
+    "label_map": {
+      "ham": 0,
+      "spam": 1
+    },
+    "dataset_sha256": "9491e1f064178996323a9e528cecba5fab4d3cb77fcfb6c08079db35893884c6",
+    "source_file_sha256": "1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3",
+    "loaded_at_utc": "2026-10-29T02:18:41.267256+00:00",
+    "modifications": "Original text retained; canonical duplicates removed; conflicting groups excluded."
+  },
+  "split_counts": {
+    "test": {
+      "0": 175,
+      "1": 25
+    },
+    "validation": {
+      "0": 175,
+      "1": 25
+    },
+    "train": {
+      "0": 701,
+      "1": 99
+    }
+  },
+  "split_sha256": "9b082c1528d81a70ed2eea341d5b2b8571f9844c7f3283024ea7845b331c157a",
+  "training": {
+    "seed": 42,
+    "epochs": 8,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "optimizer": "Adam",
+    "class_weighting": "none",
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 0.35410059452056886
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.13966091707348824
+      },
+      {
+        "epoch": 3,
+        "train_loss": 0.04782341703772545
+      },
+      {
+        "epoch": 4,
+        "train_loss": 0.008546091779135168
+      },
+      {
+        "epoch": 5,
+        "train_loss": 0.0029648527642711997
+      },
+      {
+        "epoch": 6,
+        "train_loss": 0.0016999837866751477
+      },
+      {
+        "epoch": 7,
+        "train_loss": 0.0011217959620989858
+      },
+      {
+        "epoch": 8,
+        "train_loss": 0.0008359912870218977
+      }
+    ]
+  },
+  "feature_count": 1085,
+  "validation": {
+    "metrics": {
+      "n": 200,
+      "confusion": [
+        [
+          174,
+          1
+        ],
+        [
+          2,
+          23
+        ]
+      ],
+      "accuracy": 0.985,
+      "spam_precision": 0.9583333333333334,
+      "spam_recall": 0.92,
+      "spam_f1": 0.9387755102040817,
+      "macro_f1": 0.9651142508285366,
+      "balanced_accuracy": 0.9571428571428572
+    },
+    "errors": [
+      {
+        "record_id": "sms-000882",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.6415964365005493
+      },
+      {
+        "record_id": "sms-002341",
+        "true_label": "ham",
+        "predicted_label": "spam",
+        "confidence": 0.739730954170227
+      },
+      {
+        "record_id": "sms-002431",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.9789172410964966
+      }
+    ],
+    "error_count": 3
+  },
+  "test": {
+    "metrics": {
+      "n": 200,
+      "confusion": [
+        [
+          174,
+          1
+        ],
+        [
+          5,
+          20
+        ]
+      ],
+      "accuracy": 0.97,
+      "spam_precision": 0.9523809523809523,
+      "spam_recall": 0.8,
+      "spam_f1": 0.8695652173913043,
+      "macro_f1": 0.9263080324244657,
+      "balanced_accuracy": 0.8971428571428572
+    },
+    "errors": [
+      {
+        "record_id": "sms-000575",
+        "true_label": "ham",
+        "predicted_label": "spam",
+        "confidence": 0.6721838116645813
+      },
+      {
+        "record_id": "sms-003982",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.9696425199508667
+      },
+      {
+        "record_id": "sms-004753",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.5010323524475098
+      },
+      {
+        "record_id": "sms-005101",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.9181064367294312
+      },
+      {
+        "record_id": "sms-005430",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.924530565738678
+      },
+      {
+        "record_id": "sms-005569",
+        "true_label": "spam",
+        "predicted_label": "ham",
+        "confidence": 0.6011096835136414
+      }
+    ],
+    "error_count": 6
+  },
+  "baseline": {
+    "kind": "training-majority",
+    "label_id": 0,
+    "validation": {
+      "n": 200,
+      "confusion": [
+        [
+          175,
+          0
+        ],
+        [
+          25,
+          0
+        ]
+      ],
+      "accuracy": 0.875,
+      "spam_precision": 0.0,
+      "spam_recall": 0.0,
+      "spam_f1": 0.0,
+      "macro_f1": 0.4666666666666667,
+      "balanced_accuracy": 0.5
+    },
+    "test": {
+      "n": 200,
+      "confusion": [
+        [
+          175,
+          0
+        ],
+        [
+          25,
+          0
+        ]
+      ],
+      "accuracy": 0.875,
+      "spam_precision": 0.0,
+      "spam_recall": 0.0,
+      "spam_f1": 0.0,
+      "macro_f1": 0.4666666666666667,
+      "balanced_accuracy": 0.5
+    }
+  },
+  "routing_policy": {
+    "version": "routing-policy.v1",
+    "review_threshold": 0.8,
+    "selection": "minimum validation cost over fixed grid; ties choose lower threshold",
+    "costs": {
+      "false_quarantine": 5.0,
+      "missed_spam": 1.0,
+      "review": 0.25
+    },
+    "validation_candidates": [
+      {
+        "threshold": 0.0,
+        "review_count": 0,
+        "false_quarantine": 1,
+        "missed_spam": 2,
+        "cost_per_message": 0.035
+      },
+      {
+        "threshold": 0.6,
+        "review_count": 0,
+        "false_quarantine": 1,
+        "missed_spam": 2,
+        "cost_per_message": 0.035
+      },
+      {
+        "threshold": 0.7,
+        "review_count": 1,
+        "false_quarantine": 1,
+        "missed_spam": 1,
+        "cost_per_message": 0.03125
+      },
+      {
+        "threshold": 0.8,
+        "review_count": 6,
+        "false_quarantine": 0,
+        "missed_spam": 1,
+        "cost_per_message": 0.0125
+      },
+      {
+        "threshold": 0.9,
+        "review_count": 10,
+        "false_quarantine": 0,
+        "missed_spam": 1,
+        "cost_per_message": 0.0175
+      },
+      {
+        "threshold": 0.95,
+        "review_count": 15,
+        "false_quarantine": 0,
+        "missed_spam": 1,
+        "cost_per_message": 0.02375
+      },
+      {
+        "threshold": 0.99,
+        "review_count": 31,
+        "false_quarantine": 0,
+        "missed_spam": 0,
+        "cost_per_message": 0.03875
+      }
+    ]
+  },
+  "artifact_id": "sms-7945d2850b2db72b424431c4bb4179d2ddf25f36fcfa11dc1f33063171476309",
+  "artifact_files": {
+    "preprocessing.json": "5a582198896af5677d42822a13fdc9798b4a0f1fb4e3b1ee16a9fe3ef701f01b",
+    "weights.pt": "929602ac172db220b40c63ae3ef447b984aaa6aa4c90d7c6340fe33dc77cff01"
+  },
+  "prepared_data_roundtrip": true,
+  "same_process_prediction_parity": true,
+  "fresh_process_prediction_parity": true,
+  "fresh_process_network_data_training_prohibited": true
+}

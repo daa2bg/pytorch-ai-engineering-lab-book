@@ -1,0 +1,27 @@
+{
+  "task_version": "sms-routing.v1",
+  "source": {
+    "name": "UCI SMS Spam Collection",
+    "url": "https://archive.ics.uci.edu/dataset/228/sms+spam+collection",
+    "download_url": "https://archive.ics.uci.edu/static/public/228/sms+spam+collection.zip",
+    "doi": "10.24432/C5CC84",
+    "citation": "Almeida, T. & Hidalgo, J. (2011). SMS Spam Collection. UCI Machine Learning Repository.",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "raw_sha256": "7d039a24a6083ed9ef0f806ebad56bbb976e3aeb8de05669173bfdc4996c239d",
+  "raw_rows": 5574,
+  "unique_rows": 5159,
+  "duplicate_rows": 415,
+  "conflicting_canonical_sha256": [],
+  "identity_policy": "physical-line-1based.v1",
+  "canonicalization": "nfkc-casefold-whitespace.v1",
+  "label_map": {
+    "ham": 0,
+    "spam": 1
+  },
+  "dataset_sha256": "9491e1f064178996323a9e528cecba5fab4d3cb77fcfb6c08079db35893884c6",
+  "source_file_sha256": "1587ea43e58e82b14ff1f5425c88e17f8496bfcdb67a583dbff9eefaf9963ce3",
+  "loaded_at_utc": "2026-10-29T02:18:41.267256+00:00",
+  "modifications": "Original text retained; canonical duplicates removed; conflicting groups excluded."
+}
